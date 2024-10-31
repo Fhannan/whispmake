@@ -11,17 +11,17 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v3.11.3
         with:
           python-version: '3.11.3'  # Specify your Python version
 
       - name: Install Buildozer and dependencies
         run: |
           sudo apt update
-          sudo apt install -y python3-pip
+          sudo apt install -y python3.11.3-pip
           pip install buildozer
           pip install kivy kivymd  # Include other dependencies as needed
 
