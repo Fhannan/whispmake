@@ -1,0 +1,76 @@
+<WelcomeScreen>:
+    MDBoxLayout:
+        orientation:"vertical"
+        spacing: 5
+        padding: [10, 10, 10, 10]#[left, top, right, bottom]
+        MDBoxLayout:
+            adaptive_size:True
+            Image:
+                source: "asset/icons.png"
+                size_hint: None,None
+                size: 30,30
+        Image:
+            source: "asset/wp.png"
+            size_hint_y:None
+            size_hint_y: .4  # Disable automatic sizing
+        LineWidget
+        Label:
+            text: "W H I S P !"
+            font_size: "24sp"
+            color: rgba(34, 34, 34, 255)
+            #size_hint:None
+            size_hint_y: .2
+        Label:
+            id: responsive_label
+            text: "Together we laugh, share stories, and create beautiful memories for existence that cherish forever"
+            size_hint_y: .2
+            on_size: responsive_label.font_size = 13
+            color: rgba(34, 34, 34, 255)
+            text_size:self.size
+            halign:"center" 
+            valign:"middle"
+        Button:
+            text: "Add Friend"
+            size_hint: (1, .1)
+            background_color: (0, 0, 0, 0)  # Green color (R, G, B, A)
+            on_release:
+                root.manager.transition.direction = "left"
+                root.manager.current = "friendadd"
+            canvas.before:
+                Color:
+                    rgb: rgba(52, 0 , 231 , 255)
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius: [5]
+        Button:
+            text: "Login"
+            size_hint: (1, .1)
+            background_color: (0, 0, 0, 0)  # Green color (R, G, B, A)
+            canvas.before:
+                Color:
+                    rgb: rgba(52, 0 , 231 , 255)
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius: [5]
+        LineWidget
+        Label:
+            text: "To know more about your friends forever in whisp"
+             #ont_size: "
+            color: rgba(34, 34, 34, 255)
+            size_hint_y: .2  # Disable automatic sizing
+            text_size:self.size
+            halign:"center"
+            valign:"middle"
+
+
+
+
+              
+                       
+                    
+
+                
+
+    

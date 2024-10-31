@@ -1,0 +1,79 @@
+<LineWidget>:
+    size_hint_y: None
+    height: dp(1)  # Minimal height for the line
+    canvas:
+        Color:
+            rgba: 13/255, 180/255, 185/255, 1  # Color of the line (red)
+        Line:
+            width: 1  # Width of the line
+            points: [self.x, self.y + self.height / 2, self.x + self.width, self.y + self.height / 2]  # Horizontal line
+<FriendAddScreen>:
+    MDBoxLayout:
+        orientation:"vertical"
+        padding:10
+        #spacing:1
+        canvas:
+            Color:
+                rgba: 234/255, 242/255, 215/255, 1  # Gray color
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: [20, 20, 20, 20]
+        MDBoxLayout:
+            adaptive_size:True
+            MDIconButton:
+                icon:"asset/arrow_left.png"
+                on_release: app.root.current = 'welcome'  # Navigate to the welcome screen
+
+        LineWidget
+        Label:
+            text: "W H I S P !"
+            font_size: "24sp"
+            color: rgba(34, 34, 34, 255)
+
+        MDTextField:
+            size_hint_x: .7
+            pos_hint:{"center_x":.5,"center_y":.5}
+            id: friend_name
+            hint_text: "Add a Friend"
+            on_text:
+                add_friend_button.disabled = not self.text  # Enable/disable button based on text
+                add_friend_button.md_bg_color = (0, 0, 1, 1) if self.text else (0.5, 0.5, 0.5, 1)  # Change color based on text
+                root.friend_name = self.text
+            cursor_color: 0, 0, 59, 255
+            font_size: "12sp"
+            cursor_width: "2sp"
+            multiline: False
+
+
+        AnchorLayout:
+            anchor_x: 'center'  # Anchor to the center horizontally
+            anchor_y: 'center'   # Anchor to the center vertically
+            MDRectangleFlatButton:
+                id: add_friend_button
+                disabled: True  # Initially disabled
+                md_bg_color: 0.5, 0.5, 0.5, 1  # Gray color
+                text: "Add Friend"
+                size_hint: None, None
+                on_release:
+                    root.add_friend_to_db()
+                    #friend_name.text = ""
+                    root.manager.transition.direction = "left"
+                    root.manager.current = "friendlist"
+
+
+
+                                
+
+    
+    
+    
+    
+    
+        
+    
+           
+            
+    
+        
+        

@@ -1,0 +1,61 @@
+<FriendListScreen>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding:10
+        spacing:5
+        MDFloatLayout:
+            adaptive_size:True
+            MDIconButton:
+                icon:"asset/arrow_left.png"
+                pos_hint: {"center_y": .935}
+                on_release: app.root.current = 'friendadd'
+                #size_hint: None,None
+                #size: 30,30
+            MDLabel:
+                text: "W H I S P"
+                font_size:"15sp"
+                pos_hint: {"center_x": .87, "center_y": .935}
+                halign: "center"
+                bold: True
+        LineWidget:
+        MDBoxLayout:
+            size_hint_y: .2
+            #height:150
+            orientation:"vertical"
+            canvas:
+                Color:
+                    rgba: 251/255, 231/255, 239/255, 1  # Gray color
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            MDLabel:
+                text: "Number of Total Friends"
+            MDLabel:
+                text: str(root.total_friends)
+                halign: 'center'
+            MDIconButton:
+                icon:"asset/icon.png"
+                on_release: root.now_delete()
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint_y: .4
+            height:320
+            padding:10
+            canvas:
+                Color:
+                    rgba: 234/255, 242/255, 215/255, 1  # Gray color
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            ScrollView:
+                MDBoxLayout:
+                    padding:10
+                    spacing:15
+                    id: friends_container
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: self.minimum_height
+
+
